@@ -8,7 +8,7 @@ gunicorn  # For deployment later
 # REACT
 djangorestframework
 django-cors-headers
-create-react-app@5.0.1
+# create-react-app@5.0.1
 npm
 
 # Deploy website to: render.com
