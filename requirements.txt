@@ -1,0 +1,6 @@
+pytest
+django
+djangorestframework  # For APIs (if needed)
+pillow  # For handling images
+gunicorn  # For deployment later
+# psycopg2  # If using PostgreSQL
