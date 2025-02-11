@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ai_portfolio_labs.settings')
 
 application = get_asgi_application()

@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ai_portfolio_labs.settings')
 
 application = get_wsgi_application()

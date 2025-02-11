@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # Django REST Framework
+    'corsheaders', # Allow frontend to communicate with backend
+    'ai_portfolio_labs.portfolio'
 ]
 
 MIDDLEWARE = [
@@ -51,9 +54,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
-ROOT_URLCONF = 'ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.urls'
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # Allow React frontend
+]
+
+ROOT_URLCONF = 'ai_portfolio_labs.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.wsgi.application'
+WSGI_APPLICATION = 'ai_portfolio_labs.wsgi.application'
 
 
 # Database

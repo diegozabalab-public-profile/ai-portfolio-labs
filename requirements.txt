@@ -4,3 +4,9 @@ djangorestframework  # For APIs (if needed)
 pillow  # For handling images
 gunicorn  # For deployment later
 # psycopg2  # If using PostgreSQL
+
+# REACT
+djangorestframework
+django-cors-headers
+create-react-app@5.0.1
+npm
