@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from ai_portfolio_labs_base.ai_portfolio_labs_base_folder_path_getter import get_ai_portfolio_labs_base_folder_path
+import dj_database_url
 
 BASE_DIR = \
     get_ai_portfolio_labs_base_folder_path()
@@ -26,11 +27,10 @@ SECRET_KEY = \
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = \
-    True
+    False
 
 ALLOWED_HOSTS = \
-    ["127.0.0.1", "localhost", "dazabalab.appfestiva.com"]
-
+    ["127.0.0.1", "localhost", "dazabalab.appfestiva.com", ".onrender.com"]
 
 # Application definition
 
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -84,15 +85,21 @@ WSGI_APPLICATION = 'ai_portfolio_labs.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'resources' / 'databases' / 'app_database.sqlite3',
+if os.getenv("RENDER") == "true":
+    DATABASES = {
+        "default":
+            dj_database_url.config(
+                default="postgresql://ai_portfolio_labs_database_user:hiTuAdAZhpmfCcBq7ILtlvF434JSIRh1@dpg-culfa1ogph6c73dbhn20-a/ai_portfolio_labs_database",
+                conn_max_age=600)
     }
-}
 
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "resources" / "databases" / "app_database.sqlite3",  # Local SQLite
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
