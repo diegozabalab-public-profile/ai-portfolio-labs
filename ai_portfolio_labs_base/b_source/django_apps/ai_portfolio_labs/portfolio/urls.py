@@ -3,5 +3,7 @@ from ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.portfolio imp
 
 
 urlpatterns = [
-    path('portfolio/', landing_page_home.landing_page_home, name='landing_page_home'),
+    path('', landing_page_home.landing_page_home_as_html, name='landing_page_home_as_html'),
+    path('portfolio/', landing_page_home.landing_page_home_as_html, name='landing_page_home_as_html'),
+    path('api/portfolio/', landing_page_home.landing_page_home_as_json, name='landing_page_home_as_json'),
 ]

@@ -67,7 +67,7 @@ ROOT_URLCONF = 'ai_portfolio_labs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'resources' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
