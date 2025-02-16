@@ -39,16 +39,16 @@ def __get_keras_plus_tensorflow_model_prediction_time(
     tensorflow_model_weights_folder_path = \
         get_resources_model_weights_tensorflow_folder_path()
 
-    weights_file_path = \
-        pathlib.Path(
-            tensorflow_model_weights_folder_path / 'efficientnetb7.h5')
+    # weights_file_path = \
+    #     pathlib.Path(
+    #         tensorflow_model_weights_folder_path / 'efficientnetb7.h5')
 
     model = \
         EfficientNetB7(
-            weights=None)
+            weights='imagenet')
 
-    model.load_weights(
-        weights_file_path.__str__())
+    # model.load_weights(
+    #     weights_file_path.__str__())
 
     keras_image_object_instance = \
         keras.utils.load_img(
