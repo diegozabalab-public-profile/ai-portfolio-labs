@@ -30,7 +30,13 @@ DEBUG = \
     False
 
 ALLOWED_HOSTS = \
-    ["127.0.0.1", "localhost", "dazabalab.appfestiva.com", ".onrender.com"]
+    [
+        "127.0.0.1",
+        "localhost",
+        "dazabalab.appfestiva.com",
+        ".onrender.com",
+        "api.dazabalab.appfestiva.com"
+    ]
 
 # Application definition
 
