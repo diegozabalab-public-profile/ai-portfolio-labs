@@ -16,3 +16,11 @@ def landing_page_home_as_json(
     return \
         JsonResponse(
             {"message": "Welcome to AI Portfolio Labs!", "status": "success"})
+
+
+def ai_models_inference_times_results_as_html(
+        request):
+    return \
+        render(
+            request, "ai_models_inference_times_results.html")
+
