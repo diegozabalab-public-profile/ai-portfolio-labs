@@ -1,19 +1,42 @@
-pytest
+# =======================
+# Core Dependencies
+# =======================
 django
-djangorestframework  # For APIs (if needed)
-pillow  # For handling images
-gunicorn  # For deployment later
-# psycopg2  # If using PostgreSQL
-
-# REACT
 djangorestframework
-django-cors-headers
-# create-react-app@5.0.1
-npm
 
-# Deploy website to: render.com
-gunicorn # Required to serve Django on Render.
-whitenoise # Serves static files.
-psycopg2-binary # Allows using PostgreSQL, which Render provides.
+# =======================
+# Image Processing
+# =======================
+pillow
+
+# =======================
+# Deployment
+# =======================
+gunicorn
+whitenoise
 dj_database_url
 
+# =======================
+# Database (PostgreSQL)
+# =======================
+psycopg2-binary
+
+# =======================
+# Frontend (React)
+# =======================
+django-cors-headers
+npm
+
+# =======================
+# AI & Machine Learning
+# =======================
+h5py
+tensorflow
+keras
+torch
+torchvision
+
+# =======================
+# Testing
+# =======================
+pytest

@@ -30,7 +30,13 @@ DEBUG = \
     False
 
 ALLOWED_HOSTS = \
-    ["127.0.0.1", "localhost", "dazabalab.appfestiva.com", ".onrender.com"]
+    [
+        "127.0.0.1",
+        "localhost",
+        "dazabalab.appfestiva.com",
+        ".onrender.com",
+        "api.dazabalab.appfestiva.com"
+    ]
 
 # Application definition
 
@@ -138,7 +144,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATIC_FILES_FOLDER_PATH = [os.path.join(BASE_DIR, "static")]
-MEDIA_ROOT_FOLDER_PATH = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT_FOLDER_PATH = os.path.join(BASE_DIR, 'resources', 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 

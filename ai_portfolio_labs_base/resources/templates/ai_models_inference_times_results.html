@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle of AI: TensorFlow vs PyTorch</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Hide default file input */
+        #imageInput {
+            display: none;
+        }
+
+        /* Button Row: Flexbox for alignment */
+        .button-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;  /* Space between buttons */
+            margin-top: 15px;
+        }
+
+        /* Custom button styles */
+        .custom-file-button, .run-models-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .custom-file-button:hover, .run-models-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* File name display */
+        .selected-file {
+            font-size: 14px;
+            color: #333;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f8f9fa;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .loading {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #007bff;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            background: #e3f2fd;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚔️ Battle of AI: TensorFlow vs. PyTorch</h1>
+        <p>Upload an image and see which framework predicts faster!</p>
+
+        <!-- Button Row for File Selection + File Name + Run Models -->
+        <div class="button-row">
+            <input type="file" id="imageInput" onchange="showFileName()">
+
+            <!-- Choose Image Button -->
+            <button class="custom-file-button" onclick="document.getElementById('imageInput').click()">
+                Choose Image
+            </button>
+
+            <!-- File Name Display -->
+            <span class="selected-file" id="fileNameDisplay">No file chosen yet...</span>
+
+            <!-- Run Models Button -->
+            <button class="run-models-button" onclick="uploadImage()">Run Models</button>
+        </div>
+
+        <p class="loading" id="loading" style="display: none;">Processing... ⏳</p>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function showFileName() {
+            let fileInput = document.getElementById("imageInput");
+            let fileNameDisplay = document.getElementById("fileNameDisplay");
+
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = "No file chosen yet...";
+            }
+        }
+
+        function uploadImage() {
+            let imageInput = document.getElementById("imageInput").files[0];
+            let resultDiv = document.getElementById("result");
+            let loadingText = document.getElementById("loading");
+
+            if (!imageInput) {
+                alert("Please select an image first!");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("image", imageInput);
+
+            loadingText.style.display = "block";
+            resultDiv.style.display = "none";
+
+            fetch("/api/ai_models_inference_times_comparison/", {  // ✅ Correct API URL
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadingText.style.display = "none";
+                resultDiv.style.display = "block";
+                resultDiv.innerHTML =
+                    `<strong>TensorFlow:</strong> ${data.tensorflow_time} ms <br>
+                     <strong>PyTorch:</strong> ${data.pytorch_time} ms <br>
+                     <h3>🏆 Winner: ${data.winner}!</h3>`;
+            })
+            .catch(error => {
+                loadingText.style.display = "none";
+                console.error("Error:", error);
+                alert("Error processing image. Please try again.");
+            });
+        }
+    </script>
+</body>
+</html>
