@@ -29,7 +29,9 @@ def get_ai_models_inference_times_comparison(
 
         if is_allowed_image_size:
             return \
-                JsonResponse({'error': 'File size exceeds the 5MB limit.'}, status=400)
+                JsonResponse({
+                    'error': 'File size exceeds the 5MB limit.'},
+                    status=400)
 
         pytorch_time, tensorflow_time = \
             get_ai_models_inference_times(
