@@ -33,7 +33,7 @@ npm
 h5py
 tensorflow
 keras
-torch
+torch==2.2.0
 torchvision
 
 # =======================
