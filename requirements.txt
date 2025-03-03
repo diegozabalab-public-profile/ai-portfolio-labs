@@ -31,11 +31,11 @@ npm
 # AI & Machine Learning
 # =======================
 numpy==1.26.4
-h5py
-tensorflow
-keras
+h5py==3.12.1
+tensorflow==2.16.2
+keras==3.8.0
 torch==2.2.0
-torchvision
+torchvision==0.17.2
 
 # =======================
 # Testing
