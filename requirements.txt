@@ -30,6 +30,7 @@ npm
 # =======================
 # AI & Machine Learning
 # =======================
+numpy==1.26.4
 h5py
 tensorflow
 keras
