@@ -8,7 +8,8 @@ def get_my_folder_as_file_system_folder() \
         inspect.stack())
 
     if is_stack_length_less_than_two(current_call_stack=my_current_call_stack):
-        raise FileNotFoundError
+        raise \
+            FileNotFoundError
 
     my_calling_function_folder_path = (
         __get_my_calling_function_folder_from_stack(
@@ -34,7 +35,6 @@ def is_stack_length_less_than_two(
 def __get_my_calling_function_folder_from_stack(
         current_call_stack: list) \
         -> Path:
-
     calling_frame = (
         current_call_stack)[1]
 

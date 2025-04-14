@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 from ai_portfolio_labs_base.ai_portfolio_labs_base_folder_path_getter import get_ai_portfolio_labs_base_folder_path

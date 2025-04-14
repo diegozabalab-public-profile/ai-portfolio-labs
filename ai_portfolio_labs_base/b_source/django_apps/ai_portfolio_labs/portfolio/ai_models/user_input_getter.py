@@ -1,4 +1,3 @@
-import os
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from ai_portfolio_labs_base.b_source.django_apps.ai_portfolio_labs.portfolio.ai_models.ai_models_inference_times_getter import \
